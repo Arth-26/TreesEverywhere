@@ -1,0 +1,35 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block title %}My Garden{% endblock title %}
+
+{% block imports %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{% static '/styles/garden.css' %}">
+{% endblock imports %}
+
+
+{% block content %}
+{% include 'include/partials/_topbar.html' %}
+<div class="content">
+    <a href="{% url 'trees:green_area' account.id %}" class="back-button">Voltar</a>
+    <h1>My Garden</h1>  
+    <ul>
+        {% for tree in trees %}
+        <a href="{%url 'trees:tree_detail' tree.id user.id account.id%}" class='object-tree'>
+            <li>
+                <div><strong>Tree Name:</strong> {{ tree.planted_tree }}</div>
+                <div><strong>Location:</strong> {{ tree.location }}</div>
+                <div><strong>Planted At:</strong> {{ tree.planted_at }}</div> 
+            </li>
+        </a>
+        {% empty %}
+            <li>No trees planted in this account.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock script %}

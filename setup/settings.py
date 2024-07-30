@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path, os
 from dotenv import load_dotenv
+from django.urls import reverse_lazy
 
 load_dotenv()
 
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+
     'Users',
     'Trees',
 ]
@@ -60,7 +63,7 @@ ROOT_URLCONF = 'setup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +123,8 @@ USE_I18N = True
 USE_TZ = True
 
 USE_L10N = False
+
+
 
 
 # Static files (CSS, JavaScript, Images)

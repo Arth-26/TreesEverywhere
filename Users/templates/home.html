@@ -1,0 +1,47 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block imports %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{% static '/styles/home.css' %}">
+{% endblock imports %}
+
+
+
+{% block content %}
+<div class="topbar">
+    <div class="logo">
+        <i class="fas fa-tree logo-icon">Garden</i>
+    </div>
+    <div class="topbar-buttons">
+        <a href="" class="topbar-button">Profile</a>
+        <a href="" class="topbar-button">Logout</a>
+    </div>
+</div>
+<div class="content">
+    <h1>Select your account</h1>
+        
+        <div class="account-selection">
+            {% for account in accounts %}
+                {% if account.active%}
+                <a href="{%url 'hub' account.pk %}" class="account-card">
+                    <i class="fas fa-tree account-icon"></i>
+                    <div class="account-name">{{ account.name }}</div>
+                </a>
+                {% else %}
+                <a href="#" class="account-card-disable">
+                    <i class="fas fa-tree account-icon"></i>
+                    <div class="account-name">{{ account.name }} DISABLE</div>
+                </a>
+                {% endif %}
+            {% empty %}
+                <p>Nenhuma conta disponível.</p>
+            {% endfor %}
+        </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock script %}

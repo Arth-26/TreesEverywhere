@@ -1,0 +1,32 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block title %}Account Hub{% endblock title %}
+
+{% block imports %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{% static '/styles/account_hub.css' %}">
+{% endblock imports %}
+
+
+{% block content %}
+{% include 'include/partials/_topbar.html' %}
+<div class="content">
+    <h1>Welcome to the account hub {{account.name}}</h1>
+        
+        <div class="action-select">
+            <a href="{%url 'trees:green_area' account.pk%}" class="option-card" title='Manage your trees'>
+                <i class="fas fa-tree option-icon"></i>
+                <div class="option-name">Green area</div>
+            </a>
+            <a href="{% url 'friends' account.pk %}" class="option-card">
+                <i class="fas fa-users option-icon"></i>
+                <div class="option-name">Friends</div>
+            </a>
+        </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock script %}

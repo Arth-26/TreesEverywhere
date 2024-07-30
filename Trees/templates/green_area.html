@@ -1,0 +1,38 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block title %}Green Area{% endblock title %}
+
+{% block imports %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{% static '/styles/green_area.css' %}">
+{% endblock imports %}
+
+
+{% block content %}
+{% include 'include/partials/_topbar.html' %}
+<div class="content">
+    
+    <h1>Welcome to your green area</h1>
+        
+        <div class="action-select">
+            <a href="{%url 'trees:green_area' account.pk%}" class="option-card" title='Manage your trees'>
+                <i class="fas fa-tree option-icon"></i>
+                <div class="option-name">Plant Tree</div>
+            </a>
+            <a href="{% url 'trees:garden' user.pk account.pk %}" class="option-card">
+                <i class="fas fa-seedling option-icon"></i>
+                <div class="option-name">My Garden</div>
+            </a>
+            <a href="{%url 'trees:green_area' account.pk%}" class="option-card" title='Manage your trees'>
+                <i class="fas fa-tree option-icon"></i>
+                <div class="option-name">Plant Trees</div>
+            </a>
+        </div>
+        <a href="{% url 'hub' account.id %}" class="back-button">Voltar</a>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock script %}
