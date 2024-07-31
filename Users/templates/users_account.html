@@ -12,7 +12,7 @@
 {% block content %}
 {% include 'include/partials/_topbar.html' %}
 <div class="content">
-    <a href="{% url 'hub' account.id %}" class="back-button">Voltar</a>
+    <a href="{% url 'hub' account.id %}" class="back-button">Back</a>
     <h1>Friends of Account {{ account.name }}</h1>  
     <ul>
         {% for user in users %}

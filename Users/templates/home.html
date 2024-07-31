@@ -27,12 +27,12 @@
             {% for account in accounts %}
                 {% if account.active%}
                 <a href="{%url 'hub' account.pk %}" class="account-card">
-                    <i class="fas fa-tree account-icon"></i>
+                    <i class="fa-solid fa-user-group account-icon"></i>
                     <div class="account-name">{{ account.name }}</div>
                 </a>
                 {% else %}
                 <a href="#" class="account-card-disable">
-                    <i class="fas fa-tree account-icon"></i>
+                    <i class="fa-solid fa-user-group account-icon"></i>
                     <div class="account-name">{{ account.name }} DISABLE</div>
                 </a>
                 {% endif %}

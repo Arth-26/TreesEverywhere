@@ -16,7 +16,7 @@
     <h1>Welcome to your green area</h1>
         
         <div class="action-select">
-            <a href="{%url 'trees:green_area' account.pk%}" class="option-card" title='Manage your trees'>
+            <a href="{%url 'trees:plant_tree' user.pk account.pk%}" class="option-card" title='Manage your trees'>
                 <i class="fas fa-tree option-icon"></i>
                 <div class="option-name">Plant Tree</div>
             </a>
@@ -24,15 +24,11 @@
                 <i class="fas fa-seedling option-icon"></i>
                 <div class="option-name">My Garden</div>
             </a>
-            <a href="{%url 'trees:green_area' account.pk%}" class="option-card" title='Manage your trees'>
+            <a href="{% url 'trees:plant_trees' user.pk account.pk %}" class="option-card" title='Manage your trees'>
                 <i class="fas fa-tree option-icon"></i>
                 <div class="option-name">Plant Trees</div>
             </a>
         </div>
-        <a href="{% url 'hub' account.id %}" class="back-button">Voltar</a>
+        <a href="{% url 'hub' account.id %}" class="back-button">Back</a>
 </div>
 {% endblock content %}
-
-{% block script %}
-<script src="{% static 'js/home.js' %}"></script>
-{% endblock script %}

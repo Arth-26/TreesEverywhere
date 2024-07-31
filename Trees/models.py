@@ -13,7 +13,7 @@ class Plant(models.Model):
         return self.name
 
 class PlantedTree(models.Model):
-    age = models.IntegerField()
+    age = models.IntegerField(default=0)
     planted_at = models.DateField(auto_now_add=True)
     tree = models.ForeignKey(Plant, on_delete=models.CASCADE, null=False, related_name='planted_tree')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, related_name='planted_trees')
@@ -34,6 +34,9 @@ class PlantedTree(models.Model):
     
     def planted_tree(self):
         return self.tree.name
+    
+    def get_scientific_name(self):
+        return self.tree.scientific_name
 
 
     def save(self, *args, **kwargs):

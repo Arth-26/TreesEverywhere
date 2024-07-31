@@ -1,0 +1,50 @@
+{% extends 'include/base.html' %}
+{% load static %}
+
+{% block title %}Plant a Tree{% endblock title %}
+
+{% block imports %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{% static '/styles/plant_more_tree_form.css' %}">
+{% endblock imports %}
+
+{% block content %}
+{% include 'include/partials/_topbar.html' %}
+<div class="content">
+    <h1>Plant a tree</h1>  
+    <form method="POST" action="{% url 'trees:plant_trees' user.id account.id %}" class="form-container">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="form-errors">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="form-group select-trees">
+            <label for="trees">Select Trees:</label>
+            {{ form.trees }}
+        </div>
+
+        <div id="location-fields">
+            {% comment %} The latitude and longitude fields for each plant will be added here  {% endcomment %}
+            
+        </div>
+
+
+
+        <button type="submit" class="submit-button">Plant</button>
+    </form>  
+</div>
+<a href="{% url 'trees:green_area' account.id %}" class="back-button">Back</a>
+<script src="{% static 'js/plant_more_tree.js' %}"></script>
+{% endblock content %}

@@ -23,6 +23,10 @@
                 <i class="fas fa-users option-icon"></i>
                 <div class="option-name">Friends</div>
             </a>
+            <a href="{% url 'trees:account_garden' account.pk %}" class="option-card">
+                <i class="fas fa-users option-icon"></i>
+                <div class="option-name">Account Garden</div>
+            </a>
         </div>
 </div>
 {% endblock content %}

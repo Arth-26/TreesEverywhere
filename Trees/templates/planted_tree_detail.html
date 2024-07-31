@@ -15,16 +15,13 @@
     <h1>My Tree</h1>  
     <div class="detail">
         <p><strong>Tree Name:</strong> {{ tree.planted_tree }}</p>
+        <p><strong>Scientific Name:</strong>{{ tree.get_scientific_name }}</p>
         <p><strong>Planted At:</strong> {{ tree.planted_at }}</p>
         <p><strong>Age:</strong> {{ tree.age }} years</p>
         <p><strong>Location:</strong> {{ tree.location }}</p>
         <p><strong>User:</strong> {{ tree.get_user }}</p>
         <p><strong>Account:</strong> {{ tree.get_account }}</p>
     </div>
-    <a href="{% url 'trees:garden' user.pk account.pk%}" class="back-button">Back to Home</a>
+    <a class="back-button" onclick="window.history.back();">Back</a>
 </div>
 {% endblock content %}
-
-{% block script %}
-<script src="{% static 'js/home.js' %}"></script>
-{% endblock script %}
